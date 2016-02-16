@@ -11,11 +11,11 @@
  * @package    Wemovo_Booking_Tool
  * @subpackage Wemovo_Booking_Tool/public/partials
  */
-if (ICL_LANGUAGE_CODE) {
+
+if (defined('ICL_LANGUAGE_CODE'))
     $lang = ICL_LANGUAGE_CODE;
-}else{
+else
     $lang = 'en';
-}
 
 ?>
 <form id="wemovo_search_form" method="GET" action="//book.eurolines.ch/<?php echo $lang ?>/search/">
