@@ -1,0 +1,118 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+ #wemovo_search_form input {
+     margin:5px;
+     font-size: 14px;
+     background-color: #FFF;
+     height: 35px;
+     background-color: #fff;
+    border: 1px solid #d6e1e5;
+    border-radius: 4px;
+ }
+
+ #wemovo_search_form input[type=checkbox] {
+     height: 10px;
+ }
+ #wemovo_search_form button {
+     margin:5px;
+ }
+#wemovo_search_form {
+    position:relative;
+}
+.select2 {
+    margin:5px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #0053AD;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #ddd;
+    color: #000000;
+}
+
+.select2-results__option {
+    font-size: 14px;
+    padding: 4px 10px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    user-select: none;
+    -webkit-user-select: none;
+    font-size: 14px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 35px;
+    position: absolute;
+    top: 0px;
+    right: 1px;
+    width: 20px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 35px;
+}
+.bootstrap-datetimepicker-widget {
+    position: absolute;
+    z-index: 9999;
+}
+.bootstrap-datetimepicker-widget table th.picker-switch {
+    width: 71.42857142857142%;
+    color: #000;
+}
+.datepicker .prev, .datepicker .next {
+    width: 14.28571428571429%;
+}
+.bootstrap-datetimepicker-widget .list-unstyled {
+    list-style: none;
+    background: #FFF;
+}
+.bootstrap-datetimepicker-widget table td, .bootstrap-datetimepicker-widget table th {
+    border:none;
+}
+.bootstrap-datetimepicker-widget table {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+}
+.bootstrap-datetimepicker-widget .accordion-toggle table {
+    border: none;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom::before {
+    top: -2px
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom::after {
+    top:-1px;
+}
+.datetimepicker-widget table td, .bootstrap-datetimepicker-widget table th, .bootstrap-datetimepicker-widget table td.day {
+    color: #000;
+}
+.chevron-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #000;
+    display: block;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+.chevron-left {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 12px 8px 0;
+    border-color: transparent #000 transparent transparent;
+    display: block;
+    margin-left: 10px;
+    margin-top: 3px;
+}
