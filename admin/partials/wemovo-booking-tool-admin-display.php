@@ -12,7 +12,8 @@
  * @subpackage Wemovo_Booking_Tool/admin/partials
  */
  $options = get_option($this->plugin_name);
- $url = $options['url'];
+ $partner_id = $options['partner_id'];
+ $partner_token = $options['partner_token'];
 
 
 
@@ -30,8 +31,11 @@
             <hr/>
             <form method="post" name="wbt_options" action="options.php">
                 <?php settings_fields($this->plugin_name); ?>
-                <p><strong>Url provided by Wemovo GmbH:</strong><br/>
-                    <input type="text" name="<?php echo $this->plugin_name; ?>[url]" style="width:100%;" value="<?php if(!empty($url)) echo $url ?>"placeholder="ex. book.yoursite.com"/>
+                <p><strong>Your partner ID provided by Wemovo:</strong><br/>
+                    <input type="text" name="<?php echo $this->plugin_name; ?>[partner_id]" style="width:100%;" value="<?php if(!empty($partner_id)) echo $partner_id ?>" />
+                </p>
+                <p><strong>Your Token provided by Wemovo:</strong><br/>
+                    <input type="text" name="<?php echo $this->plugin_name; ?>[partner_token]" style="width:100%;" value="<?php if(!empty($partner_token)) echo $partner_token ?>" />
                 </p>
                 <p style="display: none;"><strong>Additional CSS:</strong><br/>
                     <textarea  rows="9"  style="width:100%;" ></textarea>

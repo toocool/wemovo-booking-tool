@@ -97,7 +97,8 @@ class Wemovo_Booking_Tool_Admin {
 	    $valid = array();
 
 	    //Cleanup
-	    $valid['url'] = (isset($input['url']) && !empty($input['url'])) ?  esc_url($input['url']) : '';
+	    $valid['partner_id'] = (isset($input['partner_id']) && !empty($input['partner_id'])) ?  ($input['partner_id']) : '';
+		$valid['partner_token'] = (isset($input['partner_token']) && !empty($input['partner_token'])) ?  ($input['partner_token']) : '';
 
 	    return $valid;
  	}
