@@ -1,5 +1,12 @@
 <?php
-$url="http://gds.wemovo.com/api/destinations/".$_GET['id'];
+$start_time = microtime(TRUE);
+
+require_once( dirname('FILE').'/../../../../../wp-load.php' );
+$options = get_option('wemovo-booking-tool');
+$partner_token = $options['partner_token'];
+$api_url = $options['api_url'];
+
+$url= $api_url."/destinations/".$_GET['id'];
 //  Initiate curl
 $ch = curl_init();
 // Disable SSL verification
@@ -9,7 +16,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 // Set the url
 curl_setopt($ch, CURLOPT_URL,$url);
 $headers = array();
-$headers[] = 'Authorization: Token 31cd43a444fec801c44299abd62cab7871e37922';
+$headers[] = 'Authorization: Token '.$partner_token;
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 // Execute
 $result=curl_exec($ch);
@@ -17,4 +24,7 @@ $result=curl_exec($ch);
 curl_close($ch);
 
 echo $result;
+// $end_time = microtime(TRUE);
+// echo $end_time - $start_time;
+
  ?>

@@ -76,8 +76,7 @@ class Wemovo_Booking_Tool_Admin {
 
 	public function add_plugin_admin_menu() {
 
-	    add_menu_page( 'Wemovo booking tool', 'Wemovo BT', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
-	    );
+	    add_menu_page( 'Wemovo booking tool', 'Wemovo BT', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'), plugins_url( 'admin/img/wemovo-logo-admin.jpg', dirname(__FILE__) ) );
 	}
 
 	public function add_action_links( $links ) {
@@ -97,8 +96,10 @@ class Wemovo_Booking_Tool_Admin {
 	    $valid = array();
 
 	    //Cleanup
-	    $valid['partner_id'] = (isset($input['partner_id']) && !empty($input['partner_id'])) ?  ($input['partner_id']) : '';
-		$valid['partner_token'] = (isset($input['partner_token']) && !empty($input['partner_token'])) ?  ($input['partner_token']) : '';
+	    $valid['partner_token'] = (isset($input['partner_token']) && !empty($input['partner_token'])) ?  ($input['partner_token']) : '';
+		$valid['api_url'] = (isset($input['api_url']) && !empty($input['api_url'])) ?  ($input['api_url']) : '';
+		$valid['redirect_url'] = (isset($input['redirect_url']) && !empty($input['redirect_url'])) ?  ($input['redirect_url']) : '';
+		$valid['active'] = (isset($input['active']) && !empty($input['active'])) ?  1 : 0;
 
 	    return $valid;
  	}

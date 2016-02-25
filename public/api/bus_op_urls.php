@@ -1,10 +1,5 @@
 <?php
-require_once( dirname('FILE').'/../../../../../wp-load.php' );
-$options = get_option('wemovo-booking-tool');
-$partner_token = $options['partner_token'];
-$api_url = $options['api_url'];
-
-$url=$api_url."/origins/?q=".$_GET['q'];
+$url="http://gds.wemovo.com/api/bus_op_urls/";
 //  Initiate curl
 $ch = curl_init();
 // Disable SSL verification
@@ -15,12 +10,12 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_URL,$url);
 
 $headers = array();
-$headers[] = 'Authorization: Token '.$partner_token;
+$headers[] = 'Authorization: Token '.$_GET['token'];
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 // Execute
 $result=curl_exec($ch);
 // Closing
 curl_close($ch);
-
+header('Content-Type: application/json');
 echo $result;
  ?>
