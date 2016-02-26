@@ -17,6 +17,11 @@
  $redirect_url = $options['redirect_url'];
  $active = $options['active'];
 
+ $facebook_id = $options['facebook_id'];
+ $analytics_id = $options['analytics_id'];
+ $mailchimp_id = $options['mailchimp_id'];
+
+
 ?>
 <h1>Wemovo plugin settings</h1>
 <hr/>
@@ -34,6 +39,21 @@
                 <p><strong>Status:</strong>
                     <?php echo ($active == 1) ? '<span style="color: #05D805;">Active</span>' : '<span style="color: red;">Not active</span>'; ?>
                 </p>
+                <strong>Facebook pixel ID:</strong><br/>
+                <div style="width:40%; ">
+                    <input type="text" id="facebook_id"  name="<?php echo $this->plugin_name; ?>[facebook_id]" style="width:100%;padding: 3px;" value="<?php if(!empty($facebook_id)) echo $facebook_id ?>" />
+                </div>
+                <br/>
+                <strong>Analytics ID:</strong><br/>
+                <div style="width:40%; ">
+                    <input type="text" id="analytics_id"  name="<?php echo $this->plugin_name; ?>[analytics_id]" style="width:100%;padding: 3px;" value="<?php if(!empty($analytics_id)) echo $analytics_id ?>" />
+                </div>
+                <br/>
+                <strong>Mail chimp ID:</strong><br/>
+                <div style="width:40%; ">
+                    <input type="text" id="mailchimp_id"  name="<?php echo $this->plugin_name; ?>[mailchimp_id]" style="width:100%;padding: 3px;" value="<?php if(!empty($mailchimp_id)) echo $mailchimp_id ?>" />
+                </div>
+                <br/>
                 <strong>Your API key provided by Wemovo:</strong><br/>
                     <div style="width:40%; float: left;">
                         <input type="text" id="partner_token"  name="<?php echo $this->plugin_name; ?>[partner_token]" style="width:100%;padding: 3px;" value="<?php if(!empty($partner_token)) echo $partner_token ?>" />
@@ -70,36 +90,40 @@
 </table>
 
 <script type="text/javascript">
-//Make an API call to GDS and check if token is valid
+
 jQuery(document).ready(function($) {
-    jQuery('input[type="submit"]').prop('disabled', true);
-    jQuery("#activate").click(function(e){
-        var partner_token = jQuery('#partner_token').val();
+    $('#submit').click(function() {
+        //$.post( "http://gds.wemovo.com/api/bus_op_urls/", { token: partner_token, facebook: jQuery('#facbook_id').val(), analytics: jQuery('#analytics_id').val(), mailchimp: jQuery("#mailchimp_id").val() } );
+        return true;
+    })
+
+    //Make an API call to GDS and check if token is valid
+    $("#activate").click(function(e){
         e.preventDefault();
-            jQuery.get( "/wordpress/wp-content/plugins/wemovo-booking-tool/public/api/bus_op_urls.php", { token: partner_token })
+        var partner_token = jQuery('#partner_token').val();
+
+            $.get( "/wordpress/wp-content/plugins/wemovo-booking-tool/public/api/bus_op_urls.php", { token: partner_token })
               .done(function(data) {
                   console.log(data);
 
                   if(typeof data.api_url === "undefined" || typeof data.api_url === "undefined"){
-                      jQuery("#api_url").val('');
-                      jQuery("#redirect_url").val('');
-                      jQuery("#active").val(0);
+                      $("#api_url").val('');
+                      $("#redirect_url").val('');
+                      $("#active").val('0');
 
-                      jQuery(".error").removeClass('hide');
-                      jQuery(".success").addClass('hide');
-                      jQuery('input[type="submit"]').prop('disabled', true);
+                      $(".error").removeClass('hide');
+                      $(".success").addClass('hide');
+                      $('input[type="submit"]').prop('disabled', true);
                   }
                   else{
-                      jQuery("#api_url").val(data.api_url);
-                      jQuery("#redirect_url").val(data.redirect_url);
-                      jQuery("#active").val(1);
+                      $("#api_url").val(data.api_url);
+                      $("#redirect_url").val(data.redirect_url);
+                      $("#active").val('1');
 
-                      jQuery(".error").addClass('hide');
-                      jQuery(".success").removeClass('hide');
-                      jQuery('input[type="submit"]').prop('disabled', false);
-
+                      $(".error").addClass('hide');
+                      $(".success").removeClass('hide');
+                      $('input[type="submit"]').prop('disabled', false);
                   }
-
               })
               .fail(function() {
                   alert( "Server error please contact Wemovo GmbH" );

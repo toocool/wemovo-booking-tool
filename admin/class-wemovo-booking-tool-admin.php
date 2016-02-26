@@ -101,6 +101,10 @@ class Wemovo_Booking_Tool_Admin {
 		$valid['redirect_url'] = (isset($input['redirect_url']) && !empty($input['redirect_url'])) ?  ($input['redirect_url']) : '';
 		$valid['active'] = (isset($input['active']) && !empty($input['active'])) ?  1 : 0;
 
+		$valid['facebook_id'] = (isset($input['facebook_id']) && !empty($input['facebook_id'])) ?  ($input['facebook_id']) : '';
+		$valid['analytics_id'] = (isset($input['analytics_id']) && !empty($input['analytics_id'])) ?  ($input['analytics_id']) : '';
+		$valid['mailchimp_id'] = (isset($input['mailchimp_id']) && !empty($input['mailchimp_id'])) ?  ($input['mailchimp_id']) : '';
+
 	    return $valid;
  	}
 	public function options_update() {
