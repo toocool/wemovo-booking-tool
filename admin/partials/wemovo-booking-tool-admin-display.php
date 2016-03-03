@@ -92,17 +92,36 @@
 <script type="text/javascript">
 
 jQuery(document).ready(function($) {
-    $('#submit').click(function() {
-        //$.post( "http://gds.wemovo.com/api/bus_op_urls/", { token: partner_token, facebook: jQuery('#facbook_id').val(), analytics: jQuery('#analytics_id').val(), mailchimp: jQuery("#mailchimp_id").val() } );
-        return true;
-    })
+    // $('#submit').click(function() {
+    //     //$.post( "http://gds.wemovo.com/api/bus_op_urls/", { token: partner_token, facebook: jQuery('#facbook_id').val(), analytics: jQuery('#analytics_id').val(), mailchimp: jQuery("#mailchimp_id").val() } );
+    //     return true;
+    // })
+
+    $.ajax( {
+        headers: {"Authorization": "Bearer " + partner_token},
+        url: "http://gds.wemovo.com/api/partners/",
+        type: "POST",
+        data: {
+            facebook_id: $('#facbook_id').val(),
+            analytics_id: $('#analytics_id').val(),
+            mailchimp_id: $("#mailchimp_id").val()
+        },
+        success: function(data, status) {
+            console.log("The returned data", data);
+            form_obj.submit();
+        },
+        error: function() {
+            alert( "Server error please contact Wemovo GmbH" );
+            return false;
+        }
+    });
 
     //Make an API call to GDS and check if token is valid
     $("#activate").click(function(e){
         e.preventDefault();
         var partner_token = jQuery('#partner_token').val();
 
-            $.get( "/wordpress/wp-content/plugins/wemovo-booking-tool/public/api/bus_op_urls.php", { token: partner_token })
+            $.get( "wp-content/plugins/wemovo-booking-tool/public/api/bus_op_urls.php", { token: partner_token })
               .done(function(data) {
                   console.log(data);
 
