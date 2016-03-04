@@ -94,22 +94,21 @@
 
 jQuery(document).ready(function($) {
 
-    var api_url = '<?php echo $api_url; ?>';
+
     $('#submit').click(function() {
-        //here should if statment to check api_url if empty
-        if(api_url && typeof api_url != 'undefined') {
+        var api_url = $('#facebook_id').val('api_url');
+        if(api_url != '' && typeof api_url != 'undefined'){
             $.ajax( {
-                headers: {"Authorization": "Bearer " + partner_token},
-                url: api_url+"partners/",
+                url: "<?php echo  plugins_url($this->plugin_name) ?>/public/api/partners.php",
                 type: "POST",
                 data: {
-                    facebook_id: $('#facbook_id').val(),
+                    facebook_id: $('#facebook_id').val(),
                     analytics_id: $('#analytics_id').val(),
                     mailchimp_id: $("#mailchimp_id").val()
                 },
                 success: function(data, status) {
-                    console.log("The returned data", data);
-                    form_obj.submit();
+                    console.log("The returned data", status);
+                    return true;
                 },
                 error: function() {
                     alert( "Server error please contact Wemovo GmbH" );
@@ -117,7 +116,6 @@ jQuery(document).ready(function($) {
                 }
             });
         }
-
     });
 
     //Make an API call to GDS and check if token is valid

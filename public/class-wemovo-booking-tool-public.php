@@ -82,7 +82,7 @@ class Wemovo_Booking_Tool_Public {
 	 *
 	 */
 	public function wemovo_search_form(){
-		require('/../public/partials/wemovo-booking-tool-public-display.php');
+		require('partials/wemovo-booking-tool-public-display.php');
 	}
 
 
