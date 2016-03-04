@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
 
 
     $('#submit').click(function() {
-        var api_url = $('#facebook_id').val('api_url');
+        var api_url = $('#api_url').val();
         if(api_url != '' && typeof api_url != 'undefined'){
             $.ajax( {
                 url: "<?php echo  plugins_url($this->plugin_name) ?>/public/api/partners.php",
