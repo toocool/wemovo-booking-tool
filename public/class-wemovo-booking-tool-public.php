@@ -75,6 +75,7 @@ class Wemovo_Booking_Tool_Public {
 		wp_enqueue_script( 'moment', plugin_dir_url( __FILE__ ) . 'js/moment.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( 'datetimepicker', plugin_dir_url( __FILE__ ) . 'js/datetimepicker.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wemovo-booking-tool-public.js', array( 'jquery' ), $this->version, false );
+		wp_localize_script($this->plugin_name, 'helper_vars', array( 'pluginurl' => plugin_dir_url( __FILE__ ) ) );
 	}
 
 	/**

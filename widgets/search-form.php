@@ -71,7 +71,7 @@ class Search_form_Widget extends WP_Widget {
 		?>
 		<div class="search-form-widget">
 			<?php
-                require('/../public/partials/wemovo-booking-tool-public-display.php');
+                require(dirname(__FILE__).'/../public/partials/wemovo-booking-tool-public-display.php');
              ?>
 		</div>
 

@@ -10,7 +10,7 @@
     $select_place_from.select2({
         minimumInputLength: 3,
         ajax: {
-            url: "wp-content/plugins/wemovo-booking-tool/public/api/origin.php",
+            url: helper_vars.pluginurl+"api/origin.php",
             dataType: 'json',
             data: function (params) {
                 return {
@@ -55,7 +55,7 @@
 
     if (place_from_id) {
         initial_place_id = place_from_id;
-        $.getJSON('wp-content/plugins/wemovo-booking-tool/public/api/origin.php?' + place_from_id + '/', {},
+        $.getJSON(helper_vars.pluginurl+'api/origin.php?' + place_from_id + '/', {},
             function (place) {
                 var option = new Option(place['city' + '_' + main_current_language], place.id, true, true);
                 $select_place_from.append(option);
@@ -75,13 +75,12 @@ function select2Focus() {
     }, 0);
 }
 
-
 function update_destination_select(place_from_id, place_to_id) {
     var places_to = [];
     var $select_place_to = $("#select_place_to");
     $select_place_to.val('');
     $select_place_to.empty();
-    $.getJSON('wp-content/plugins/wemovo-booking-tool/public/api/destinations.php?id=' + place_from_id + '/', {},
+    $.getJSON(helper_vars.pluginurl+'api/destinations.php?id=' + place_from_id + '/', {},
         function (places) {
             $.each(places, function (idx, value) {
                 places_to.push({id: value.id, text: value['city' + '_' + main_current_language]});

@@ -1,5 +1,5 @@
 <?php
-$url="http://gds.wemovo.com/api/bus_op_urls/";
+$url="https://gds.wemovo.com/api/bus_op_urls/";
 //  Initiate curl
 $ch = curl_init();
 // Disable SSL verification
