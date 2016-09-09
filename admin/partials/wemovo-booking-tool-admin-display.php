@@ -27,12 +27,6 @@
 ?>
 <h1>Wemovo plugin settings</h1>
 <hr/>
-<?php
-echo $passenger_types;
-foreach ($passenger_types as $test) {
-    echo $test;
-}
-?>
 <table width="100%">
     <tr>
         <td class="wbt-block">
