@@ -21,11 +21,18 @@
  $analytics_id = $options['analytics_id'];
  $mailchimp_id = $options['mailchimp_id'];
 
+ $passenger_types = $options['passenger_types'];
+
 
 ?>
 <h1>Wemovo plugin settings</h1>
 <hr/>
-
+<?php
+echo $passenger_types;
+foreach ($passenger_types as $test) {
+    echo $test;
+}
+?>
 <table width="100%">
     <tr>
         <td class="wbt-block">
@@ -61,6 +68,7 @@
                         <input type="hidden" id="api_url" name="<?php echo $this->plugin_name; ?>[api_url]"  value="<?php if(!empty($api_url)) echo $api_url ?>" />
                         <input type="hidden" id="redirect_url" name="<?php echo $this->plugin_name; ?>[redirect_url]"  value="<?php if(!empty($redirect_url)) echo $redirect_url ?>" />
                         <input type="hidden" id="active" name="<?php echo $this->plugin_name; ?>[active]"  value="<?php if(!empty($active)) echo $active ?>" />
+                        <div class="passenger_types"></div>
                     <div style="width:60%; display: inline-block">
                         <button  class="button button-default" id="activate" >Check</button>
                     </div>
@@ -137,6 +145,11 @@ jQuery(document).ready(function($) {
                   else{
                       $("#api_url").val(data.api_url);
                       $("#redirect_url").val(data.redirect_url);
+                      $(".passenger_types").append(data.passenger_types)
+                      $(".passenger_types").html("");
+                        $.each(data.passenger_types, function(k, v) {
+                            $(".passenger_types").append("<input type='hidden' name='wemovo-booking-tool[passenger_types][]' value='"+k+"|"+v+"' ></input>");
+                        });
                       $("#active").val('1');
 
                       $(".error").addClass('hide');

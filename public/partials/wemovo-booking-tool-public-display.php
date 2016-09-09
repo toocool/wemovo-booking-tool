@@ -16,6 +16,7 @@
  $options = get_option('wemovo-booking-tool');
  $redirect_url = $options['redirect_url'];
  $active = $options['active'];
+ $passenger_types = $options['passenger_types'];
 
  if($active != 1) {
      echo 'Please activate your plugin by providing the Wemovo API key';
@@ -43,6 +44,20 @@
                     <option value="4">4 <?php _e('passengers','wemovo-booking-tool') ?></option>
                     <option value="5">5 <?php _e('passengers','wemovo-booking-tool') ?></option>
                 </select>
+        <div class="form-group">
+
+            <?php
+            foreach ($passenger_types as $passenger_type) {
+                $splited_types = explode('|',$passenger_type );
+
+                echo '<div style="width:45%;float:left;margin: 5px 5px;">
+                        <div style="width: 50%; float:left; padding-top: 10px;"><label style="vertical-align: middle">'.$splited_types[1].'</label></div>
+                        <div style="width: 40%; float:left"><input type="number" max="5" min="0" id="passenger_type_'.$splited_types[0].'" name="passenger_type_'.$splited_types[0].'" ></div>
+                        </div>';
+            }
+            ?>
+        </div>
+
         <input type="checkbox" id="open_return" name="open_return"/> <small><?php _e('Open return (validity 6 month)','wemovo-booking-tool') ?></small>
         <br/>
         <button type="submit"><?php _e('Search','wemovo-booking-tool')?></button>
@@ -50,4 +65,3 @@
 <?php
 }
 ?>
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->

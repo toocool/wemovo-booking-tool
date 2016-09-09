@@ -104,6 +104,7 @@ class Wemovo_Booking_Tool_Admin {
 		$valid['facebook_id'] = (isset($input['facebook_id']) && !empty($input['facebook_id'])) ?  ($input['facebook_id']) : '';
 		$valid['analytics_id'] = (isset($input['analytics_id']) && !empty($input['analytics_id'])) ?  ($input['analytics_id']) : '';
 		$valid['mailchimp_id'] = (isset($input['mailchimp_id']) && !empty($input['mailchimp_id'])) ?  ($input['mailchimp_id']) : '';
+		$valid['passenger_types'] = $input['passenger_types'];
 
 	    return $valid;
  	}
