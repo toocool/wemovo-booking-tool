@@ -26,6 +26,10 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 
 $headers[] = 'Authorization: Token '.$partner_token;
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+if(curl_error($ch))
+{
+    echo 'error:' . curl_error($ch);
+}
 $result=curl_exec($ch);
 curl_close($ch);
 header('Content-Type: application/json');

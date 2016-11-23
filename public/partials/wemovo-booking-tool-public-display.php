@@ -27,7 +27,7 @@
     else
         $lang = 'en';
 ?>
-    <form id="wemovo_search_form" target="_blank" method="GET" action="<?php echo $redirect_url.$lang ?>/search/">
+    <form id="wemovo_search_form" target="_blank" method="GET" action="<?php echo $redirect_url ?>/search/">
         <select style="width: 100%;" name="place_from_id" id="select_place_from" class="form-control select input-sm" required="required" data-regexp="^[1-9]\d*" data-placeholder="<?php _e('Departure Station','wemovo-booking-tool') ?>"></select>
         <select  style="width:100%" name="place_to_id" id="select_place_to" data-placeholder="<?php _e('Arrival Station','wemovo-booking-tool') ?>" ></select>
         <div class="form-group">
@@ -36,14 +36,7 @@
         <div class="form-group">
             <input type="text" class="form-control" name="date_to" id="date_to" placeholder="<?php _e('Return (optional)','wemovo-booking-tool') ?>" />
         </div>
-        <select name="passenger_count" id="passenger_count" class="form-control select select-default"
-                        style="width: 100%">
-                    <option value="1">1 <?php _e('passenger','wemovo-booking-tool') ?></option>
-                    <option value="2">2 <?php _e('passengers','wemovo-booking-tool') ?></option>
-                    <option value="3">3 <?php _e('passengers','wemovo-booking-tool') ?></option>
-                    <option value="4">4 <?php _e('passengers','wemovo-booking-tool') ?></option>
-                    <option value="5">5 <?php _e('passengers','wemovo-booking-tool') ?></option>
-                </select>
+
         <div class="form-group">
 
             <?php

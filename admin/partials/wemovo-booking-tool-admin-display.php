@@ -40,6 +40,7 @@
                 <p><strong>Status:</strong>
                     <?php echo ($active == 1) ? '<span style="color: #05D805;">Active</span>' : '<span style="color: red;">Not active</span>'; ?>
                 </p>
+                <!--
                 <strong>Facebook pixel ID:</strong><br/>
                 <div style="width:40%; ">
                     <input type="text" id="facebook_id"  name="<?php echo $this->plugin_name; ?>[facebook_id]" style="width:100%;padding: 3px;" value="<?php if(!empty($facebook_id)) echo $facebook_id ?>" />
@@ -55,6 +56,7 @@
                     <input type="text" id="mailchimp_id"  name="<?php echo $this->plugin_name; ?>[mailchimp_id]" style="width:100%;padding: 3px;" value="<?php if(!empty($mailchimp_id)) echo $mailchimp_id ?>" />
                 </div>
                 <br/>
+                -->
                 <strong>Your API key provided by Wemovo:</strong><br/>
                     <div style="width:40%; float: left;">
                         <input type="text" id="partner_token"  name="<?php echo $this->plugin_name; ?>[partner_token]" style="width:100%;padding: 3px;" value="<?php if(!empty($partner_token)) echo $partner_token ?>" />
@@ -97,28 +99,28 @@
 jQuery(document).ready(function($) {
 
 
-    $('#submit').click(function() {
-        var api_url = $('#api_url').val();
-        if(api_url != '' && typeof api_url != 'undefined'){
-            $.ajax( {
-                url: "<?php echo  plugins_url($this->plugin_name) ?>/public/api/partners.php",
-                type: "POST",
-                data: {
-                    facebook_id: $('#facebook_id').val(),
-                    analytics_id: $('#analytics_id').val(),
-                    mailchimp_id: $("#mailchimp_id").val()
-                },
-                success: function(data, status) {
-                    console.log("The returned data", status);
-                    return true;
-                },
-                error: function() {
-                    alert( "Server error please contact Wemovo GmbH" );
-                    return false;
-                }
-            });
-        }
-    });
+    // $('#submit').click(function() {
+    //     var api_url = $('#api_url').val();
+    //     if(api_url != '' && typeof api_url != 'undefined'){
+    //         $.ajax( {
+    //             url: "<?php echo  plugins_url($this->plugin_name) ?>/public/api/partners.php",
+    //             type: "POST",
+    //             data: {
+    //                 facebook_id: $('#facebook_id').val(),
+    //                 analytics_id: $('#analytics_id').val(),
+    //                 mailchimp_id: $("#mailchimp_id").val()
+    //             },
+    //             success: function(data, status) {
+    //                 console.log("The returned data", status);
+    //                 return true;
+    //             },
+    //             error: function() {
+    //                 alert( "Server error please contact Wemovo GmbH" );
+    //                 return false;
+    //             }
+    //         });
+    //     }
+    // });
 
     //Make an API call to GDS and check if token is valid
     $("#activate").click(function(e){
