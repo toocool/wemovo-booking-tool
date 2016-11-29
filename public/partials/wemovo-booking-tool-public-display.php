@@ -40,13 +40,27 @@
         <div class="form-group">
 
             <?php
+            $passenger_number = 0;
+            $i = 0;
             foreach ($passenger_types as $passenger_type) {
                 $splited_types = explode('|',$passenger_type );
+                if($i == 0)
+                    $passenger_number = 1;
+                else
+                    $passenger_number = 0;
 
                 echo '<div style="width:45%;float:left;margin: 5px 5px;">
                         <div style="width: 50%; float:left; padding-top: 10px;"><label style="vertical-align: middle">'.$splited_types[1].'</label></div>
-                        <div style="width: 40%; float:left"><input type="number" max="5" min="0" id="passenger_type_'.$splited_types[0].'" name="passenger_type_'.$splited_types[0].'" ></div>
+                        <div style="width: 40%; float:left">
+                            <input type="number"
+                                    max="5"
+                                    min="0"
+                                    id="passenger_type_'.$splited_types[0].'"
+                                    name="passenger_type_'.$splited_types[0].'"
+                                    value="'.$passenger_number.'"
+                                     ></div>
                         </div>';
+                $i++;
             }
             ?>
         </div>
