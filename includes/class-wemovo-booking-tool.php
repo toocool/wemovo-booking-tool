@@ -181,6 +181,8 @@ class Wemovo_Booking_Tool {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_shortcode( 'wemovo_search_form', $plugin_public, 'wemovo_search_form' );
+		$this->loader->add_shortcode( 'wemovo_station_arrivals', $plugin_public, 'wemovo_station_arrivals' );
+		$this->loader->add_shortcode( 'wemovo_station_departures', $plugin_public, 'wemovo_station_departures' );
 
 	}
 

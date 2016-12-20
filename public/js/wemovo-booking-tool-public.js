@@ -1,6 +1,6 @@
+
 (function( $ ) {
 	'use strict';
-
 	var initial_place_id = null;
 	var main_current_language = 'en';
 	function init_place_selects(place_from_id, place_to_id) {
@@ -31,6 +31,7 @@
             },
             cache: true
         }
+
     }).one('select2-focus', select2Focus).on("select2-blur", function () {
         $(this).one('select2-focus', select2Focus)
     });
@@ -94,9 +95,9 @@ function update_destination_select(place_from_id, place_to_id) {
                 $select_place_to.val('').trigger("change");
             }
             $select_place_to.select2('enable');
-            if (!initial_place_id) {
-                $select_place_to.select2('open');
-            }
+            // if (!initial_place_id) {
+            //     $select_place_to.select2('open');
+            // }
         });
 
 }

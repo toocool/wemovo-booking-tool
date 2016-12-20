@@ -17,6 +17,9 @@
  $redirect_url = $options['redirect_url'];
  $active = $options['active'];
  $passenger_types = $options['passenger_types'];
+// echo $departure_id;
+
+
 
  if($active != 1) {
      echo 'Please activate your plugin by providing the Wemovo API key';
@@ -27,8 +30,13 @@
     else
         $lang = 'en';
 ?>
+
+<?php
+ echo '<script type="text/javascript"> var place_from_id = '.$departure_id.'; var place_from_name = "'.$departure_name.'";</script>';
+?>
+
     <form id="wemovo_search_form" target="_blank" method="GET" action="<?php echo $redirect_url ?>/search/">
-        <select style="width: 100%;" name="place_from_id" id="select_place_from" class="form-control select input-sm" required="required" data-regexp="^[1-9]\d*" data-placeholder="<?php _e('Departure Station','wemovo-booking-tool') ?>"></select>
+        <select style="width: 100%;" name="place_from_id" id="select_place_from" data-initvalue='asds' class="form-control select input-sm" required="required" data-regexp="^[1-9]\d*" data-placeholder="<?php _e('Departure Station','wemovo-booking-tool') ?>" ></select>
         <select  style="width:100%" name="place_to_id" id="select_place_to" data-placeholder="<?php _e('Arrival Station','wemovo-booking-tool') ?>" ></select>
         <div class="form-group">
             <input type="text" class="form-control" name="date_from" id="date_from"  placeholder="<?php echo date("d/m/Y"); ?>" value="<?php echo date("d/m/Y"); ?>" />
@@ -69,6 +77,17 @@
         <br/>
         <button type="submit"><?php _e('Search','wemovo-booking-tool')?></button>
     </form>
+    <script type="text/javascript">
+    jQuery(function () {
+        var select_place_from = jQuery('#select_place_from');
+
+        if (place_from_id) {
+                    var option = new Option(place_from_name, place_from_id, true, true);
+                    select_place_from.append(option);
+                    select_place_from.trigger("change");
+        }
+    });
+    </script>
 <?php
 }
 ?>

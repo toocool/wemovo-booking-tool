@@ -82,8 +82,38 @@ class Wemovo_Booking_Tool_Public {
 	 * This function is the search form shortcode.
 	 *
 	 */
-	public function wemovo_search_form(){
+	public function wemovo_search_form($atts = []){
+	    $atts = array_change_key_case((array)$atts, CASE_LOWER);
+
+		$a = shortcode_atts( array(
+	        'departure_id' => '',
+			'departure_name' => '',
+	    ), $atts );
+		// echo $a['departure_id'];
+		$departure_id = $a['departure_id'];
+		$departure_name = $a['departure_name'];
 		require('partials/wemovo-booking-tool-public-display.php');
+	}
+
+	public function wemovo_station_arrivals($atts = []){
+	    $atts = array_change_key_case((array)$atts, CASE_LOWER);
+
+		$a = shortcode_atts( array(
+	        'station_id' => '',
+	    ), $atts );
+		$station_id = $a['station_id'];
+		$direction = 'arrival';
+		require('partials/wemovo-station-arrivals.php');
+	}
+	public function wemovo_station_departures($atts = []){
+	    $atts = array_change_key_case((array)$atts, CASE_LOWER);
+
+		$a = shortcode_atts( array(
+	        'station_id' => '',
+	    ), $atts );
+		$station_id = $a['station_id'];
+		$direction = 'departure';
+		require('partials/wemovo-station-departure.php');
 	}
 
 
