@@ -1,44 +1,15 @@
-<table class="table">
+<?php
+  echo '<script type="text/javascript"> var station_id = "'.$station_id.'";</script>';
+?>
+<table class="table" id="arrivals_table">
     <thead>
         <tr>
-            <th>Arrival</th>
-            <th>From</th>
-            <th>Via</th>
+            <th class="arrival_header">Arrival</th>
+            <th class="from_header">From</th>
+            <th class="via_header">Via</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>20:50</td>
-            <td>Wuerzburg central train station</td>
-            <td>
-                <ul>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>20:50</td>
-            <td>Wuerzburg central train station</td>
-            <td>
-                <ul>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>20:50</td>
-            <td>Wuerzburg central train station</td>
-            <td>
-                <ul>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                    <li>Bonn (Museumsmeile) - Frankfurt central train station</li>
-                </ul>
-            </td>
-        </tr>
+
     </tbody>
 </table>

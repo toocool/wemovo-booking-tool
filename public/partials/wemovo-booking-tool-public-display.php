@@ -32,11 +32,11 @@
 ?>
 
 <?php
- echo '<script type="text/javascript"> var place_from_id = '.$departure_id.'; var place_from_name = "'.$departure_name.'";</script>';
+ echo '<script type="text/javascript"> var place_from_id = "'.$departure_id.'"; var place_from_name = "'.$departure_name.'";</script>';
 ?>
 
     <form id="wemovo_search_form" target="_blank" method="GET" action="<?php echo $redirect_url ?>/search/">
-        <select style="width: 100%;" name="place_from_id" id="select_place_from" data-initvalue='asds' class="form-control select input-sm" required="required" data-regexp="^[1-9]\d*" data-placeholder="<?php _e('Departure Station','wemovo-booking-tool') ?>" ></select>
+        <select style="width: 100%;" name="place_from_id" id="select_place_from"  class="form-control select input-sm" required="required" data-regexp="^[1-9]\d*" data-placeholder="<?php _e('Departure Station','wemovo-booking-tool') ?>" ></select>
         <select  style="width:100%" name="place_to_id" id="select_place_to" data-placeholder="<?php _e('Arrival Station','wemovo-booking-tool') ?>" ></select>
         <div class="form-group">
             <input type="text" class="form-control" name="date_from" id="date_from"  placeholder="<?php echo date("d/m/Y"); ?>" value="<?php echo date("d/m/Y"); ?>" />
